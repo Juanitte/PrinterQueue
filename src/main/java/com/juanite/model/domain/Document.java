@@ -27,35 +27,35 @@ public class Document {
         }
     }
 
-    public String getName() {
+    public String getDocName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setDocName(String name) {
         this.name = name;
     }
 
-    public String getContent() {
+    public String getDocContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setDocContent(String content) {
         this.content = content;
     }
 
-    public Priority getPriority() {
+    public Priority getDocPriority() {
         return priority;
     }
 
-    public void setPriority(Priority priority) {
+    public void setDocPriority(Priority priority) {
         this.priority = priority;
     }
 
-    public int getPriorityValue() {
+    public int getDocPriorityValue() {
         return priorityValue;
     }
 
-    public void setPriorityValue(int priorityValue) {
+    public void setDocPriorityValue(int priorityValue) {
         this.priorityValue = priorityValue;
     }
 

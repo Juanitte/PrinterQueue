@@ -4,6 +4,7 @@ import com.juanite.model.domain.Document;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+
 public class AppData {
     private static boolean isRunning = false;
     private static Document printingDoc;
@@ -11,43 +12,43 @@ public class AppData {
     private static ObservableList<Document> completedDocs = FXCollections.observableArrayList();
     private static ObservableList<Document> selectedDoc = FXCollections.observableArrayList();
 
-    public static boolean isIsRunning() {
+    public static synchronized boolean isIsRunning() {
         return isRunning;
     }
 
-    public static void setIsRunning(boolean isRunning) {
+    public static synchronized void setIsRunning(boolean isRunning) {
         AppData.isRunning = isRunning;
     }
 
-    public static Document getPrintingDoc() {
+    public static synchronized Document getPrintingDoc() {
         return printingDoc;
     }
 
-    public static void setPrintingDoc(Document printingDoc) {
+    public static synchronized void setPrintingDoc(Document printingDoc) {
         AppData.printingDoc = printingDoc;
     }
 
-    public static ObservableList<Document> getQueueDocs() {
+    public static synchronized ObservableList<Document> getQueueDocs() {
         return queueDocs;
     }
 
-    public static void setQueueDocs(ObservableList<Document> queueDocs) {
+    public static synchronized void setQueueDocs(ObservableList<Document> queueDocs) {
         AppData.queueDocs = queueDocs;
     }
 
-    public static ObservableList<Document> getCompletedDocs() {
+    public static synchronized ObservableList<Document> getCompletedDocs() {
         return completedDocs;
     }
 
-    public static void setCompletedDocs(ObservableList<Document> completedDocs) {
+    public static synchronized void setCompletedDocs(ObservableList<Document> completedDocs) {
         AppData.completedDocs = completedDocs;
     }
 
-    public static ObservableList<Document> getSelectedDoc() {
+    public static synchronized ObservableList<Document> getSelectedDoc() {
         return selectedDoc;
     }
 
-    public static void setSelectedDoc(ObservableList<Document> selectedDoc) {
+    public static synchronized void setSelectedDoc(ObservableList<Document> selectedDoc) {
         AppData.selectedDoc = selectedDoc;
     }
 }
