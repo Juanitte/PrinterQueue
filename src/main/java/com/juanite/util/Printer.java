@@ -1,9 +1,17 @@
 package com.juanite.util;
 
-public class Printer implements Runnable {
+import com.juanite.model.domain.Document;
 
-    @Override
-    public void run() {
+public class Printer extends Thread {
 
+    public Printer() {
+
+    }
+    public void printDocument(Document document) throws InterruptedException {
+        AppData.getQueueDocs().remove(document);
+        AppData.setPrintingDoc(document);
+        this.wait(3000);
+        AppData.setPrintingDoc(null);
+        AppData.getCompletedDocs().add(document);
     }
 }

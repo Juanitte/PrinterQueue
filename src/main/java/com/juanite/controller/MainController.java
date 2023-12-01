@@ -1,10 +1,14 @@
 package com.juanite.controller;
 
 import com.juanite.model.domain.Document;
+import com.juanite.util.AppData;
+import com.juanite.util.PrintSimulator;
+import com.juanite.util.Printer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -36,12 +40,40 @@ public class MainController {
     public TableColumn<Document,String> tc_documentPriority;
     @FXML
     public TableColumn<Document,Integer> tc_documentNumeric;
-
-    private ObservableList<Document> queueDocs = FXCollections.observableArrayList();
-    private ObservableList<Document> completedDocs = FXCollections.observableArrayList();
-    private ObservableList<Document> focusedDoc = FXCollections.observableArrayList();
+    @FXML
+    public ProgressBar pb_print;
+    private PrintSimulator printSimulator = new PrintSimulator();
+    private Printer printer = new Printer();
 
     void initialize() {
 
+    }
+
+    public void startPauseQueue() {
+        if(!AppData.isIsRunning()) {
+            AppData.setIsRunning(true);
+            printSimulator.run();
+        } else {
+            AppData.setIsRunning(false);
+        }
+    }
+
+    public void stopQueue() {
+
+    }
+
+    public void refreshQueue() {
+        tv_queue.setItems(AppData.getQueueDocs());
+        tv_queue.refresh();
+    }
+
+    public void refreshCompleted() {
+        tv_completed.setItems(AppData.getCompletedDocs());
+        tv_completed.refresh();
+    }
+
+    public void refreshSelected() {
+        tv_document.setItems(AppData.getSelectedDoc());
+        tv_document.refresh();
     }
 }
